@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment-green
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+      env: green
+  template:
+    metadata:
+      labels:
+        app: nginx
+        env: green
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: DATABASE_HOST
+          value: db.example.com
+        resources:
+          limits:
+            memory: "256Mi"  # Maximum memory allowed
+            cpu: "200m"       # Maximum CPU allowed (200 milliCPU)
+          requests:
+            memory: "128Mi"  # Initial memory request
+            cpu: "100m"       # Initial CPU request
+        volumeMounts:
+        - name: pv-claim-green
+          mountPath: "/usr/share/nginx/html/"
+      volumes:
+      - name: pv-claim-green
+        persistentVolumeClaim:
+          claimName: pv-claim-green
