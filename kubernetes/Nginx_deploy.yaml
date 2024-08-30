@@ -20,8 +20,3 @@ spec:
         env:
         - name: DATABASE_HOST
           value: db.example.com
-        - name: API_KEY
-          valueFrom:
-            secretKeyRef:
-              name: my-secret
-              key: api-key
