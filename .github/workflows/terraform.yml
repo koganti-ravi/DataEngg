@@ -93,7 +93,7 @@ jobs:
     - name: Terraform Workspace
       run: |
            cd terraform
-           terraform workspace select ${{ inputs.env_name }}  
+           terraform workspace select -or-create ${{ inputs.env_name }}  
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
