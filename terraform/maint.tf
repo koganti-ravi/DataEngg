@@ -21,10 +21,23 @@ resource "aws_instance" "ec2_example" {
    tags = {
            Name = "ec2-${var.LOB}"
    }
+} 
+
+# All AWS Instances
+data "aws_instances" "MyInstances" {
+  instance_state_names = ["running","stopped"]
+  filter {
+    name   = "tag:Name"
+    values = ["client"]
+  } 
+  depends_on = [ aws_instance.ec2_example ]
 }
 
 
-output "public_ip" {
-    value = [aws_instance.ec2_example[*].public_ip]
+
+
+
+output "public_ip_list" {
+    value = data.aws_instances.MyInstances.private_ips
 } 
 

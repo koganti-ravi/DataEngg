@@ -4,6 +4,11 @@ variable "LOB" {
    default = "Sales"
  }
 
+ variable "env_name" {
+   type = string
+   description = "env name"
+ }
+
 variable "num_ec2_instances" {
    type = number
    description = "line of business"
