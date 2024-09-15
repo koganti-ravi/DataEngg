@@ -42,7 +42,7 @@
 #       with:
 #         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-name: 'Terraform-dev'
+name: 'Terraform'
 
 on:
   workflow_dispatch:
@@ -101,4 +101,4 @@ jobs:
     - name: Terraform Apply
       run:  |
        cd terraform 
-       terraform apply --var-file="Terraform-dev1.tfvars" --auto-approve=true
+       terraform apply --var-file="Terraform-${{ inputs.env_name }}.tfvars" --auto-approve=true
