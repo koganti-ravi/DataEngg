@@ -19,7 +19,7 @@ resource "aws_instance" "ec2_example" {
    instance_type = var.inst_type
    vpc_security_group_ids = [ "sg-c46962ba" ]
    tags = {
-           Name = "ec2-${var.LOB}"
+           Name = "ec2-${var.LOB}-${var.env_name}"
    }
 } 
 
