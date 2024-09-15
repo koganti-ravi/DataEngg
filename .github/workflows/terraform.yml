@@ -90,6 +90,10 @@ jobs:
       # cd terraform 
       #terraform fmt -check
 
+    - name: Terraform Workspace
+      run: |
+           terraform workspace select ${{ inputs.env_name }}  
+
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run:  |
