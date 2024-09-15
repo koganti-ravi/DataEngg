@@ -9,12 +9,22 @@ provider "aws" {
  region = "us-east-1"
 }
 
+locals {
+    tag_name_local="name"
+}
+
 resource "aws_instance" "ec2_example" {
-   
-   ami           = "ami-0182f373e66f89c85"
-   instance_type = "t2.micro"
-   
+   count = var.num_ec2_instances
+   ami           = var.ami_id
+   instance_type = var.inst_type
+   security_groups = [ "sg1","sg2" ]
    tags = {
-           Name = "Terraform EC2"
+           Name = "ec2-${var.LOB}"
    }
 }
+
+
+output "public_ip" {
+    value = [aws_instance.ec2_example[*].public_ip]
+} 
+
