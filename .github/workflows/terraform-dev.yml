@@ -94,4 +94,4 @@ jobs:
     - name: Terraform Apply
       run:  |
        cd terraform 
-       terraform apply --var-file="Terraform-dev.tfvars"
+       terraform apply --var-file="Terraform-dev.tfvars" --auto-approve=true
