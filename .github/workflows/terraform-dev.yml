@@ -46,12 +46,19 @@ name: 'Terraform-dev'
 
 on:
   workflow_dispatch:
+    inputs:
+      env_name:
+        type: choice
+        description: enter env name
+        options: 
+        - dev
+        - prod
 
 jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
-    environment: dev
+    environment: inputs.env_name
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
