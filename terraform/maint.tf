@@ -17,7 +17,7 @@ resource "aws_instance" "ec2_example" {
    count = var.num_ec2_instances
    ami           = var.ami_id
    instance_type = var.inst_type
-   security_groups = [ "sg-c46962ba" ]
+   vpc_security_group_ids = [ "sg-c46962ba" ]
    tags = {
            Name = "ec2-${var.LOB}"
    }
