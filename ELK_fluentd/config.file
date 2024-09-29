@@ -4,3 +4,9 @@
   pos_file /var/log/td-agent/httpd-access.log.pos
   tag apache.access
 </source>
+
+<match pattern>
+  @type file
+  path /var/log/fluent/myapp
+</match>
+
