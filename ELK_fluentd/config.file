@@ -3,6 +3,10 @@
   path /var/log/httpd-access.log
   pos_file /var/log/httpd-access.log.pos
   tag apache.access
+<parse>
+  @type json
+</parse>
+
 </source>
 
 <filter access>
