@@ -5,8 +5,8 @@
   tag apache.access
 </source>
 
-<match pattern>
+<match apache.access>
   @type file
-  path /var/log/fluent/myapp
+  path /var/log/fluent/httpd-access_fluentd.log
 </match>
 
