@@ -5,6 +5,14 @@
   tag apache.access
 </source>
 
+<filter access>
+  @type record_transformer
+  <record>
+    hostname ${hostname}
+  </record>
+</filter>
+
+
 <match apache.access>
   @type file
   path /var/log/fluent/httpd-access_fluentd.log
